@@ -1,0 +1,21 @@
+<div class="shop" id="shop_list">
+    {% for c in cart %}
+        <div class="item_cart">
+
+            <span>{{ c.title }}</span>
+            <p>
+            <a href="{% url 'rem_count' item_id=c.id_item %}"  class="rem">&nbsp;-&nbsp;</a>
+            {{ c.count }}шт.
+            <a href="{% url 'add_count' item_id=c.id_item %}" class="add">&nbsp;+&nbsp;</a>
+            </p>
+            <span> {{ c.summary }}$</span>
+
+            <a href="{% url 'remove_cart' item_id=c.id_item %}" class="close">&times;Удалить&times;</a>
+        </div>
+        <hr>
+    {% endfor %}
+    <div class="ttt">
+        <span class="sum">Итого: {{ total }}$</span>
+        <a href="https://coop-land.ru/uploads/posts/2024-03/1709914895_big.jpg" class="btn_buy">Оформить заказ</a>
+    </div>
+</div>

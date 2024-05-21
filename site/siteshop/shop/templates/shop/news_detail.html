@@ -1,0 +1,20 @@
+{% extends "shop/base.html" %}
+{% load static %}
+{% load cache %}
+
+{% block header %}
+    {% cache 300 header %}
+        {% include "inc/_header.html" %}
+    {% endcache %}
+{% endblock %}
+{% block content %}
+    <h1>{{ news_item.title }}</h1>
+    <p>{{ news_item.content }}</p>
+    <p>Date: {{ news_item.date }}</p>
+{% endblock %}
+{% block footer %}
+    {% cache 300 footer %}
+        {% include "inc/_footer.html" %}
+    {% endcache %}
+{% endblock %}
+

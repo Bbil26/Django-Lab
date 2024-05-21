@@ -1,0 +1,16 @@
+{% extends "shop/base.html" %}
+{% load static %}
+{% load cache %}
+{% load loader %}
+
+{% block header %}
+    {% include "inc/_header.html" %}
+    {% cart_list %}
+{% endblock %}
+{% block content %}
+    {% items_list %} {% endblock %}
+{% block footer %}
+    {% cache 300 footer %}
+        {% include "inc/_footer.html" %}
+    {% endcache %}
+{% endblock %}

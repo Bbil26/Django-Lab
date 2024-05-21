@@ -1,0 +1,9 @@
+<div class="articles">
+    {% for item in articles %}
+        <a href="{{ item.get_absolute_url }}" class="art" >
+                <p class="news_title">{{ item.title }}</p>
+                <div class="news_content">{{ item.content|safe }}</div>
+        </a>
+        <hr class="news_hr">
+    {% endfor %}
+</div>

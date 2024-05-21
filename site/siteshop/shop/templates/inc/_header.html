@@ -1,0 +1,40 @@
+<header class="menu_panel">
+    <div class="menu">
+        <a href="{% url 'home' %}" class="but">Главная</a>
+        <a href="{% url 'news' %}" class="but">Информация</a>
+        <a href="https://clannad.fandom.com/ru/wiki/Dango_Daikazoku#Romaji_" class="but" style="width: 28%">Dango Daikazoku</a>
+        <a href="#" onclick="opModal()" id="cart_but" class="but">Корзина</a>
+        <a href="#" onclick="openModal()" class="but">Профиль</a>
+    </div>
+</header>
+{% include "shop/users.html" %}
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var shopList = document.getElementById('shop_list');
+        var displayValue = localStorage.getItem('value');
+        if (displayValue) {
+            shopList.style.display = displayValue;
+        }
+    });
+
+    function opModal() {
+        document.getElementById('shop_list').style.display = 'block';
+        localStorage.setItem('value', 'block');
+    }
+
+    function clModal() {
+        document.getElementById('shop_list').style.display = 'none';
+        localStorage.setItem('value', 'none');
+    }
+
+    document.addEventListener('click', function(event) {
+        var shopDiv = document.getElementById('shop_list');
+        var shopBut = document.getElementById('cart_but');
+        var targetElement = event.target;
+
+        if (!shopDiv.contains(targetElement) && !shopBut.contains(targetElement)) {
+            clModal();
+        }
+    });
+</script>

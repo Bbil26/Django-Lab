@@ -1,0 +1,18 @@
+{% load static %}
+{% for item in items %}
+<div id="item_list">
+    <div id="item_first">
+        <div id="item_ico">
+            <img class="ico" src="{% static item.ico %}">
+        </div>
+        <p class="price">{{ item.cost }}$</p>
+    </div>
+
+    <div id="item_info">
+        <p class="item_title">{{ item.title }}</p>
+        <p>{{ item.info }}</p>
+    </div>
+</div>
+    <a href="{% url 'add_to_cart' item_id=item.id_item %}" class="btn btn-primary">Добавить в корзину</a>
+<hr>
+{% endfor %}

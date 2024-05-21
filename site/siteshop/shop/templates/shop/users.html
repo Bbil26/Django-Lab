@@ -1,0 +1,30 @@
+<!-- users.html -->
+<div id="modal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <h2>Авторизация</h2>
+        {% if error %}
+            <p>{{ error }}</p>
+        {% endif %}
+        <form method="POST">
+            {% csrf_token %}
+            <label for="login">Логин:</label><br>
+            <input type="text" id="login" name="login"><br>
+            <label for="password">Пароль:</label><br>
+            <input type="password" id="password" name="password"><br><br>
+            <button type="submit">Войти</button>
+            <button type="button">Выйти</button>
+        </form>
+    </div>
+</div>
+
+
+<script>
+    function openModal() {
+        document.getElementById('modal').style.display = 'block';
+    }
+
+    function closeModal() {
+        document.getElementById('modal').style.display = 'none';
+    }
+</script>
